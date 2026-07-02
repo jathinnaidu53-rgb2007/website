@@ -1,0 +1,38 @@
+import type { MetadataRoute } from "next";
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: "Sarada Homeo Clinic",
+    short_name: "Sarada Homeo",
+    description:
+      "Trusted homeopathic healthcare in Srikakulam, Andhra Pradesh. Led by Dr. Panchireddy Anil Kumar (Reg. No. 5732).",
+    start_url: "/",
+    display: "standalone",
+    background_color: "#f9f9fc",
+    theme_color: "#006a39",
+    orientation: "portrait-primary",
+    lang: "en-IN",
+    scope: "/",
+    categories: ["health", "medical"],
+    icons: [
+      { src: "/logo.svg", type: "image/svg+xml", sizes: "any", purpose: "maskable" },
+      { src: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+    ],
+    shortcuts: [
+      {
+        name: "Book Appointment",
+        short_name: "Book",
+        description: "Schedule a consultation with Dr. Anil Kumar",
+        url: "/book",
+        icons: [{ src: "/logo.svg", sizes: "any" }],
+      },
+      {
+        name: "Contact Clinic",
+        short_name: "Contact",
+        description: "Get directions, phone number, and WhatsApp",
+        url: "/contact",
+        icons: [{ src: "/logo.svg", sizes: "any" }],
+      },
+    ],
+  };
+}
