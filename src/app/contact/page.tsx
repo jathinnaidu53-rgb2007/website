@@ -146,10 +146,26 @@ export default function Contact() {
     setLoading(true);
 
     try {
-      // ── Integration point ─────────────────────────────────────────────────
-      // const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(formData) });
-      // if (!res.ok) throw new Error("Server error. Please try again.");
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+      if (formspreeId) {
+        const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            ...formData,
+            _subject: `New Contact Message from ${formData.name}`
+          }),
+        });
+        if (!res.ok) {
+          throw new Error("Message sending failed. Please check your fields and try again.");
+        }
+      } else {
+        // Fallback simulated response
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+      }
 
       setSuccess(true);
       setFormData({ name: "", email: "", mobile: "", message: "" });

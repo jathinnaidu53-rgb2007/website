@@ -26,11 +26,14 @@ export default function FloatingWidgets() {
 
   if (!mounted) return null;
 
-  const phoneNumber = "919440955008";
+  const rawPhone = process.env.NEXT_PUBLIC_PHONE || "919440955008";
+  const cleanPhone = rawPhone.replace(/\D/g, "");
+  const whatsappPhone = cleanPhone.length === 10 ? "91" + cleanPhone : cleanPhone;
   const whatsappMessage = encodeURIComponent(
     "Hello Doctor, I would like to book a consultation at Sarada Homeo Clinic."
   );
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/${whatsappPhone}?text=${whatsappMessage}`;
+  const callHref = `tel:+${whatsappPhone}`;
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -63,9 +66,9 @@ export default function FloatingWidgets() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.1 }}
-        href="tel:+919440955008"
+        href={callHref}
         className="w-11 h-11 bg-primary hover:bg-primary/90 text-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 group"
-        aria-label="Call Sarada Homeo Clinic at +91 94409 55008"
+        aria-label={`Call Sarada Homeo Clinic at +${whatsappPhone}`}
       >
         <Phone className="w-5 h-5" aria-hidden="true" />
         {/* Tooltip */}

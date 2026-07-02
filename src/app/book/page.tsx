@@ -151,19 +151,26 @@ export default function BookAppointment() {
     setNetworkError("");
 
     try {
-      // ── Integration point ────────────────────────────────────────────────
-      // Uncomment one of the following blocks to activate backend integration:
-      //
-      // Option A – Next.js API Route:
-      // const res = await fetch("/api/book", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
-      // if (!res.ok) throw new Error("Server error. Please try again.");
-      //
-      // Option B – Formspree:
-      // const res = await fetch("https://formspree.io/f/YOUR_ID", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
-      // if (!res.ok) throw new Error("Submission failed.");
-      //
-      // For now, simulate network delay:
-      await new Promise((resolve) => setTimeout(resolve, 1800));
+      const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+      if (formspreeId) {
+        const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            ...data,
+            _subject: `New Appointment Request from ${data.name}`
+          }),
+        });
+        if (!res.ok) {
+          throw new Error("Submission failed. Please check your fields and try again.");
+        }
+      } else {
+        // Fallback simulated response
+        await new Promise((resolve) => setTimeout(resolve, 1800));
+      }
 
       const ref = `SHC${Date.now().toString().slice(-6)}`;
       setBookingRef(ref);
