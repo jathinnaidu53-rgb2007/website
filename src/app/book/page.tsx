@@ -151,32 +151,52 @@ export default function BookAppointment() {
     setNetworkError("");
 
     try {
-      const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
-      if (formspreeId) {
-        const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify({
-            ...data,
-            _subject: `New Appointment Request from ${data.name}`
-          }),
-        });
-        if (!res.ok) {
-          throw new Error("Submission failed. Please check your fields and try again.");
-        }
-      } else {
-        // Fallback simulated response
-        await new Promise((resolve) => setTimeout(resolve, 1800));
-      }
+      const genderLabel = data.gender.charAt(0).toUpperCase() + data.gender.slice(1);
+      const timeLabel = data.preferredTime.charAt(0).toUpperCase() + data.preferredTime.slice(1);
+
+      const messageText = `🏥 Sarada Homeo Clinic
+
+📌 NEW APPOINTMENT REQUEST
+
+👤 Patient Name:
+${data.name}
+
+📱 Mobile:
+${data.mobile}
+
+🎂 Age:
+${data.age}
+
+⚧ Gender:
+${genderLabel}
+
+📍 Address:
+${data.address || "N/A"}
+
+🩺 Health Problem:
+${data.service}
+
+📅 Preferred Date:
+${data.preferredDate}
+
+🕒 Preferred Time:
+${timeLabel}
+
+📝 Additional Notes:
+${data.concern}
+
+Please confirm my appointment.
+
+Thank you.`;
+
+      const whatsappUrl = `https://wa.me/919440955008?text=${encodeURIComponent(messageText)}`;
+      window.open(whatsappUrl, "_blank");
 
       const ref = `SHC${Date.now().toString().slice(-6)}`;
       setBookingRef(ref);
       setSubmitted(true);
       reset();
-      addToast("Appointment request submitted successfully!", "success");
+      addToast("Appointment request redirected to WhatsApp!", "success");
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Network error. Please check your connection and try again.";
       setNetworkError(msg);

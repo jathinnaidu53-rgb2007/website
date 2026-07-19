@@ -111,7 +111,7 @@ function InfoCard({
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", mobile: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", mobile: "", subject: "", message: "" });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [formError, setFormError] = useState("");
@@ -137,8 +137,8 @@ export default function Contact() {
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     if (submitLock.current || loading) return;
-    if (!formData.name.trim() || !formData.mobile.trim() || !formData.message.trim()) {
-      setFormError("Please fill in all required fields (Name, Mobile, Message).");
+    if (!formData.name.trim() || !formData.mobile.trim() || !formData.subject.trim() || !formData.message.trim()) {
+      setFormError("Please fill in all required fields (Name, Mobile, Subject, Message).");
       return;
     }
     setFormError("");
@@ -146,30 +146,33 @@ export default function Contact() {
     setLoading(true);
 
     try {
-      const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
-      if (formspreeId) {
-        const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify({
-            ...formData,
-            _subject: `New Contact Message from ${formData.name}`
-          }),
-        });
-        if (!res.ok) {
-          throw new Error("Message sending failed. Please check your fields and try again.");
-        }
-      } else {
-        // Fallback simulated response
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-      }
+      const messageText = `🏥 Sarada Homeo Clinic
+
+📩 NEW CONTACT ENQUIRY
+
+👤 Name:
+${formData.name}
+
+📱 Phone:
+${formData.mobile}
+
+📧 Email:
+${formData.email || "N/A"}
+
+📌 Subject:
+${formData.subject}
+
+💬 Message:
+${formData.message}
+
+Thank you.`;
+
+      const whatsappUrl = `https://wa.me/919440955008?text=${encodeURIComponent(messageText)}`;
+      window.open(whatsappUrl, "_blank");
 
       setSuccess(true);
-      setFormData({ name: "", email: "", mobile: "", message: "" });
-      addToast("Message sent! We will get back to you soon.", "success");
+      setFormData({ name: "", email: "", mobile: "", subject: "", message: "" });
+      addToast("Message sent! Redirecting to WhatsApp.", "success");
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Network error. Please check your connection and try again.";
       setFormError(msg);
@@ -365,6 +368,18 @@ export default function Contact() {
                           inputMode="email"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          className={fieldCls}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="contact-subject" className="sr-only">Subject</label>
+                        <input
+                          id="contact-subject"
+                          type="text"
+                          placeholder="Subject *"
+                          aria-required="true"
+                          value={formData.subject}
+                          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                           className={fieldCls}
                         />
                       </div>
