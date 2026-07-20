@@ -5,69 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { X, Search, Image as ImageIcon, ChevronLeft, ChevronRight } from "lucide-react";
 
-type GalleryCategory = "clinic" | "consultation" | "medicine" | "doctor" | "waiting";
-
-interface GalleryItem {
-  id: number;
-  category: GalleryCategory;
-  title: string;
-  caption: string;
-  alt: string;
-  imgUrl: string;
-}
-
-/* ── Exact order specified by the user ── */
-const galleryItems: GalleryItem[] = [
-  {
-    id: 1,
-    category: "clinic",
-    title: "Sarada Homeo Clinic Exterior",
-    caption: "Sarada Homeo Clinic Exterior",
-    alt: "Sarada Homeo Clinic Exterior — front view with signage, Srikakulam",
-    imgUrl: "/images/gallery/clinic-exterior.jpg"
-  },
-  {
-    id: 2,
-    category: "consultation",
-    title: "Doctor Consulting Patient",
-    caption: "Doctor Consultation with Patient",
-    alt: "Doctor consulting a patient at Sarada Homeo Clinic",
-    imgUrl: "/images/gallery/doctor-consultation.jpg"
-  },
-  {
-    id: 3,
-    category: "medicine",
-    title: "Homeopathic Medicine Section",
-    caption: "Homeopathic Medicine Collection",
-    alt: "Homeopathic medicine shelves stocked with dilutions and remedies",
-    imgUrl: "/images/gallery/medicine-section.jpg"
-  },
-  {
-    id: 4,
-    category: "doctor",
-    title: "Dr. Panchireddi Anil Kumar",
-    caption: "Dr. Panchireddi Anil Kumar, BHMS",
-    alt: "Dr. Panchireddi Anil Kumar (BHMS) — Chief Physician, Sarada Homeo Clinic",
-    imgUrl: "/images/doctor/doctor-portrait.jpg"
-  },
-  {
-    id: 5,
-    category: "waiting",
-    title: "Patient Waiting Area",
-    caption: "Patient Waiting Area",
-    alt: "Patient waiting area at Sarada Homeo Clinic",
-    imgUrl: "/images/gallery/waiting-area.jpg"
-  }
-];
-
-const filterTabs = [
-  { id: "all",          label: "All" },
-  { id: "clinic",       label: "Clinic Exterior" },
-  { id: "consultation", label: "Consultation" },
-  { id: "medicine",     label: "Medicine" },
-  { id: "doctor",       label: "Doctor" },
-  { id: "waiting",      label: "Waiting Area" }
-];
+// ✅ Single source of truth — all image mappings live in galleryData.ts
+import { GALLERY_ITEMS, GALLERY_FILTER_TABS } from "@/data/galleryData";
 
 export default function Gallery() {
   const [filter, setFilter] = useState<string>("all");
@@ -75,8 +14,8 @@ export default function Gallery() {
 
   const filteredItems =
     filter === "all"
-      ? galleryItems
-      : galleryItems.filter((item) => item.category === filter);
+      ? GALLERY_ITEMS
+      : GALLERY_ITEMS.filter((item) => item.category === filter);
 
   /* Keyboard navigation for lightbox */
   useEffect(() => {
@@ -124,7 +63,7 @@ export default function Gallery() {
 
           {/* Filter Pills */}
           <div className="flex flex-wrap justify-center gap-2" role="tablist" aria-label="Gallery filter">
-            {filterTabs.map((cat) => (
+            {GALLERY_FILTER_TABS.map((cat) => (
               <button
                 key={cat.id}
                 role="tab"
@@ -146,7 +85,7 @@ export default function Gallery() {
             <AnimatePresence mode="popLayout">
               {filteredItems.map((item, idx) => (
                 <motion.div
-                  key={item.id}
+                  key={item.id}           // ← stable ID, never the array index
                   layout
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -155,17 +94,16 @@ export default function Gallery() {
                   onClick={() => setLightboxIndex(idx)}
                   className="group relative cursor-pointer overflow-hidden rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 shadow-sm hover:shadow-xl transition-all duration-300"
                 >
-                  {/* Image */}
+                  {/* Image — uses item.image, NEVER an index */}
                   <div className="relative w-full h-64 overflow-hidden rounded-t-3xl">
                     <Image
-                      src={item.imgUrl}
+                      src={item.image}      // ← explicit named path from galleryData.ts
                       alt={item.alt}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
                     />
-                    {/* Hover overlay with search icon */}
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 flex items-center justify-center transition-colors duration-300">
                       <Search className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
@@ -248,7 +186,7 @@ export default function Gallery() {
             >
               <div className="w-full h-80 sm:h-[450px] relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900">
                 <Image
-                  src={filteredItems[lightboxIndex].imgUrl}
+                  src={filteredItems[lightboxIndex].image}
                   alt={filteredItems[lightboxIndex].alt}
                   fill
                   className="object-contain"
