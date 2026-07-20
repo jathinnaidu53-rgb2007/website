@@ -5,9 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { X, Search, Image as ImageIcon, ChevronLeft, ChevronRight } from "lucide-react";
 
+type GalleryCategory = "clinic" | "reception" | "consultation" | "waiting" | "care" | "doctor";
+
 interface GalleryItem {
   id: number;
-  category: "clinic" | "doctor" | "consultation" | "facilities";
+  category: GalleryCategory;
   title: string;
   desc: string;
   imgUrl: string;
@@ -17,37 +19,44 @@ const galleryItems: GalleryItem[] = [
   {
     id: 1,
     category: "clinic",
-    title: "Sarada Homeo Clinic Exterior",
-    desc: "Branding entrance front view of Sarada Homeo Clinic, Srikakulam.",
+    title: "Clinic Exterior",
+    desc: "Front entrance of Sarada Homeo Clinic — Opp. Diamond Park, New Colony, Srikakulam.",
     imgUrl: "/images/gallery/clinic-exterior.jpg"
   },
   {
     id: 2,
-    category: "consultation",
-    title: "Doctor Consulting Patient",
-    desc: "Dr. Panchireddi Anil Kumar consulting a patient in the consultation room.",
-    imgUrl: "/images/gallery/doctor-consultation.jpg"
+    category: "reception",
+    title: "Reception",
+    desc: "The reception and medicine dispensary area of Sarada Homeo Clinic.",
+    imgUrl: "/images/gallery/reception.jpg"
   },
   {
     id: 3,
-    category: "facilities",
-    title: "Homeopathic Remedy Shelves",
-    desc: "In-house stock of certified homeopathic medicine dilutions.",
-    imgUrl: "/images/gallery/medicine-section.jpg"
+    category: "consultation",
+    title: "Consultation Room",
+    desc: "Dr. Panchireddi Anil Kumar consulting a patient at his chamber desk.",
+    imgUrl: "/images/gallery/doctor-consultation.jpg"
   },
   {
     id: 4,
-    category: "doctor",
-    title: "Dr. Panchireddi Anil Kumar",
-    desc: "BHMS registered practitioner (No. 5732) at his chamber desk.",
-    imgUrl: "/images/doctor/doctor-portrait.jpg"
+    category: "waiting",
+    title: "Patient Waiting Area",
+    desc: "Comfortable waiting area where patients wait before their consultation.",
+    imgUrl: "/images/gallery/waiting-area.jpg"
   },
   {
     id: 5,
-    category: "facilities",
-    title: "Patient Waiting Area",
-    desc: "Spacious patient waiting area and lobby spaces.",
-    imgUrl: "/images/gallery/waiting-area.jpg"
+    category: "care",
+    title: "Homeopathic Remedy Shelves",
+    desc: "In-house stock of certified homeopathic medicine dilutions and remedies.",
+    imgUrl: "/images/gallery/medicine-section.jpg"
+  },
+  {
+    id: 6,
+    category: "doctor",
+    title: "Dr. Panchireddi Anil Kumar",
+    desc: "BHMS, Reg. No. 5732 — Chief Physician at Sarada Homeo Clinic.",
+    imgUrl: "/images/doctor/doctor-portrait.jpg"
   }
 ];
 
@@ -106,10 +115,12 @@ export default function Gallery() {
           <div className="flex flex-wrap justify-center gap-2">
             {[
               { id: "all", name: "All Spaces" },
-              { id: "clinic", name: "Clinic" },
-              { id: "doctor", name: "Doctor" },
-              { id: "consultation", name: "Consultation" },
-              { id: "facilities", name: "Facilities" }
+              { id: "clinic", name: "Clinic Exterior" },
+              { id: "reception", name: "Reception" },
+              { id: "consultation", name: "Consultation Room" },
+              { id: "waiting", name: "Waiting Area" },
+              { id: "care", name: "Patient Care" },
+              { id: "doctor", name: "Doctor" }
             ].map((cat) => (
               <button
                 key={cat.id}
