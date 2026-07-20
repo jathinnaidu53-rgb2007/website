@@ -6,24 +6,25 @@
 
 ## 🛠️ Work Accomplished (Pre-Launch Content Migration)
 
-We have successfully performed the final doctor portrait, content, branding, asset updates, and centralized data mapping to customize the clinic's public presence with real photography and accurate doctor credentials prior to Vercel deployment.
+We have successfully performed the final doctor portrait, content, branding, asset updates, exact maps coordinates update, and centralized data mapping to customize the clinic's public presence with real photography and accurate doctor credentials prior to Vercel deployment.
 
-### 1. Centralized Gallery Mapping (Permanent Fix)
+### 1. Exact Google Maps Location (Sarada Homeo Clinic Pin)
+* Integrated the official Google Maps Embed URL for **`Sarada Homeo Clinic`** at New Colony, Srikakulam.
+* Configured the exact GPS coordinates in `layout.tsx` SEO schemas block:
+  * Latitude: **`18.296722`**
+  * Longitude: **`83.894879`**
+* Updated all directions buttons and hyperlinks to direct to the official pinned location card:
+  * `https://www.google.com/maps/place/Sarada+Homeo+Clinic/@18.296722,83.894879,16.5z/data=!4m6!3m5!1s0x3a3c1508ab026f8d:0x463273e970a5abf1!8m2!3d18.296722!4d83.894879!16s%2Fg%2F11wsp3ybd0`
+* Embed frames are fully responsive, support rounded corners, lazy loading, full-screen options, and strict security referrer policies.
+
+### 2. Centralized Gallery Mapping (Permanent Fix)
 * Created a single source of truth configuration file in [`src/data/galleryData.ts`](file:///C:/Users/anil6/.gemini/antigravity/scratch/sarada-homeo-clinic/src/data/galleryData.ts).
-* Each gallery card explicitly maps its title, description, and accessibility attributes to its designated path, eliminating array-index lookup patterns.
-* Aligned physical images under `public/images/gallery/` to correctly map filename structures:
-  * `clinic-exterior.jpg` (Clinic Exterior)
-  * `doctor-consultation.jpg` (Doctor Consulting Patient)
-  * `medicine-section.jpg` (Homeopathic Medicine Section)
-  * `doctor-portrait.jpg` (Dr. Panchireddi Anil Kumar Portrait)
-  * `waiting-area.jpg` (Patient Waiting Area)
+* Swapped the image mappings so that:
+  * **Doctor Consulting Patient** card displays `/images/gallery/waiting-area.jpg`.
+  * **Patient Waiting Area** card displays `/images/gallery/doctor-consultation.jpg`.
 
-### 2. Unified Doctor Spelling Update (Completed)
+### 3. Unified Doctor Spelling Update (Completed)
 * Consistently replaced all occurrences of `Dr. Panchireddy Anil Kumar` with **`Dr. Panchireddi Anil Kumar`** (updated across meta headers, OpenGraph, JSON-LD schemas, Hero descriptions, Profile cards, and Footer tags).
-
-### 3. Exact Google Maps Integration (Completed)
-* Integrated query-based map embed src pointing directly to **`Sarada Homeo Clinic New Colony Srikakulam`**, showing the marker on load.
-* Integrated latitude (`18.2949`) and longitude (`83.8967`) coordinates inside the `MedicalClinic` JSON-LD schema.
 
 ### 4. Contact Page Grid & WhatsApp Integration (Completed)
 * Re-aligned contact options into a 5-column grid mapping **WhatsApp**, **Phone**, **Email**, **Clinic Address**, and **Clinic Timings**.
