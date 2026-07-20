@@ -1,222 +1,285 @@
 "use client";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Camera, CalendarCheck, Phone, Sparkles, Clock, ImageOff } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { X, Search, Image as ImageIcon, ChevronLeft, ChevronRight } from "lucide-react";
 
-const featureCards = [
+type GalleryCategory = "clinic" | "consultation" | "medicine" | "doctor" | "waiting";
+
+interface GalleryItem {
+  id: number;
+  category: GalleryCategory;
+  title: string;
+  caption: string;
+  alt: string;
+  imgUrl: string;
+}
+
+/* ── Exact order specified by the user ── */
+const galleryItems: GalleryItem[] = [
   {
-    icon: Camera,
-    title: "Clinic Exterior",
-    desc: "Our clinic location and entrance in Srikakulam."
+    id: 1,
+    category: "clinic",
+    title: "Sarada Homeo Clinic Exterior",
+    caption: "Sarada Homeo Clinic Exterior",
+    alt: "Sarada Homeo Clinic Exterior — front view with signage, Srikakulam",
+    imgUrl: "/images/gallery/clinic-exterior.jpg"
   },
   {
-    icon: Sparkles,
-    title: "Consultation Room",
-    desc: "The chamber where healing begins — Dr. Anil Kumar's desk."
+    id: 2,
+    category: "consultation",
+    title: "Doctor Consulting Patient",
+    caption: "Doctor Consultation with Patient",
+    alt: "Doctor consulting a patient at Sarada Homeo Clinic",
+    imgUrl: "/images/gallery/doctor-consultation.jpg"
   },
   {
-    icon: ImageOff,
-    title: "Waiting Area",
-    desc: "A comfortable space for patients before their appointment."
+    id: 3,
+    category: "medicine",
+    title: "Homeopathic Medicine Section",
+    caption: "Homeopathic Medicine Collection",
+    alt: "Homeopathic medicine shelves stocked with dilutions and remedies",
+    imgUrl: "/images/gallery/medicine-section.jpg"
   },
   {
-    icon: Clock,
-    title: "Medicine Section",
-    desc: "Our in-house homeopathic dilutions and remedy stocks."
+    id: 4,
+    category: "doctor",
+    title: "Dr. Panchireddi Anil Kumar",
+    caption: "Dr. Panchireddi Anil Kumar, BHMS",
+    alt: "Dr. Panchireddi Anil Kumar (BHMS) — Chief Physician, Sarada Homeo Clinic",
+    imgUrl: "/images/doctor/doctor-portrait.jpg"
+  },
+  {
+    id: 5,
+    category: "waiting",
+    title: "Patient Waiting Area",
+    caption: "Patient Waiting Area",
+    alt: "Patient waiting area at Sarada Homeo Clinic",
+    imgUrl: "/images/gallery/waiting-area.jpg"
   }
 ];
 
+const filterTabs = [
+  { id: "all",          label: "All" },
+  { id: "clinic",       label: "Clinic Exterior" },
+  { id: "consultation", label: "Consultation" },
+  { id: "medicine",     label: "Medicine" },
+  { id: "doctor",       label: "Doctor" },
+  { id: "waiting",      label: "Waiting Area" }
+];
+
 export default function Gallery() {
+  const [filter, setFilter] = useState<string>("all");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const filteredItems =
+    filter === "all"
+      ? galleryItems
+      : galleryItems.filter((item) => item.category === filter);
+
+  /* Keyboard navigation for lightbox */
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxIndex(null);
+      if (e.key === "ArrowRight")
+        setLightboxIndex((p) => (p !== null ? (p + 1) % filteredItems.length : null));
+      if (e.key === "ArrowLeft")
+        setLightboxIndex((p) =>
+          p !== null ? (p - 1 + filteredItems.length) % filteredItems.length : null
+        );
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxIndex, filteredItems.length]);
+
   return (
-    <div className="flex flex-col w-full bg-slate-50 dark:bg-slate-950 font-inter overflow-hidden min-h-screen">
+    <div className="flex flex-col w-full bg-slate-50 dark:bg-slate-950 font-inter overflow-hidden">
 
-      {/* HERO SECTION */}
-      <section
-        className="relative pt-32 pb-20 bg-gradient-to-b from-teal-50/30 to-slate-50 dark:from-slate-900/20 dark:to-slate-950"
-        aria-label="Gallery Coming Soon"
-      >
-        {/* Decorative blurred orb */}
-        <div
-          className="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-teal-400/10 dark:bg-teal-500/5 blur-3xl pointer-events-none"
-          aria-hidden="true"
-        />
-
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="flex flex-col items-center text-center space-y-8"
-          >
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 dark:bg-teal-500/10 text-primary dark:text-teal-400 rounded-full text-xs font-semibold tracking-widest uppercase border border-primary/20 dark:border-teal-500/20">
-              <Camera className="w-3.5 h-3.5" />
-              <span>Clinic Gallery</span>
-            </div>
-
-            {/* Animated gallery icon */}
-            <motion.div
-              initial={{ scale: 0.85, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative"
-            >
-              {/* Outer glow ring */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-teal-400/20 to-emerald-400/10 dark:from-teal-500/10 dark:to-emerald-500/5 blur-xl" aria-hidden="true" />
-              <div className="relative w-28 h-28 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-xl flex items-center justify-center">
-                <Camera className="w-12 h-12 text-primary dark:text-teal-400" strokeWidth={1.4} />
-                {/* Sparkle dots */}
-                <motion.div
-                  animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
-                  transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-                  className="absolute top-3 right-3 w-2 h-2 bg-teal-400 rounded-full"
-                  aria-hidden="true"
-                />
-                <motion.div
-                  animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.9, 0.4] }}
-                  transition={{ repeat: Infinity, duration: 3, ease: "easeInOut", delay: 0.8 }}
-                  className="absolute bottom-3 left-3 w-1.5 h-1.5 bg-emerald-400 rounded-full"
-                  aria-hidden="true"
-                />
-              </div>
-            </motion.div>
-
-            {/* Main heading */}
-            <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">
-                Gallery{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-emerald-500">
-                  Coming Soon
-                </span>
-              </h1>
-
-              <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
-                We are updating our clinic gallery with new photos. Please check back soon to explore our facilities and patient care environment.
-              </p>
-            </div>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.35 }}
-              className="flex flex-col sm:flex-row items-center gap-4 pt-2"
-            >
-              <Link
-                href="/book"
-                id="gallery-cta-book"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary hover:bg-primary/90 text-white rounded-full font-poppins font-semibold text-sm shadow-lg shadow-primary/25 transition-all duration-200 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50"
-              >
-                <CalendarCheck className="w-4 h-4" />
-                Book Appointment
-              </Link>
-              <Link
-                href="/contact"
-                id="gallery-cta-contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 rounded-full font-poppins font-semibold text-sm shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600"
-              >
-                <Phone className="w-4 h-4" />
-                Contact Us
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
+      {/* ── 1. HERO ── */}
+      <section className="relative pt-32 pb-16 bg-gradient-to-b from-teal-50/20 to-slate-50 dark:from-slate-900/10 dark:to-slate-950 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 space-y-4"
+        >
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 text-primary dark:text-accent rounded-full text-xs font-semibold">
+            <ImageIcon className="w-3.5 h-3.5" />
+            <span>Clinic Infrastructure</span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-poppins font-extrabold text-slate-900 dark:text-white leading-tight">
+            Our Gallery &amp; Space
+          </h1>
+          <p className="text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            Take a visual tour of our consulting chambers, pharmacy, waiting lounge, and our doctor.
+          </p>
+        </motion.div>
       </section>
 
-      {/* PREVIEW CARDS SECTION — what will be in the gallery */}
-      <section className="py-16 bg-white dark:bg-slate-900" aria-label="Gallery preview categories">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      {/* ── 2. GALLERY GRID ── */}
+      <section className="py-12 bg-white dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center space-y-2"
-          >
-            <p className="text-[10px] font-bold uppercase tracking-widest text-primary dark:text-teal-400">
-              Coming Up
-            </p>
-            <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-slate-900 dark:text-white">
-              What You'll Find in Our Gallery
-            </h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto">
-              A curated look at our clinic spaces, care environment, and team.
-            </p>
-          </motion.div>
-
-          {/* Feature Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featureCards.map((card, idx) => (
-              <motion.div
-                key={card.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="group relative flex flex-col items-center text-center gap-4 p-6 rounded-3xl bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
+          {/* Filter Pills */}
+          <div className="flex flex-wrap justify-center gap-2" role="tablist" aria-label="Gallery filter">
+            {filterTabs.map((cat) => (
+              <button
+                key={cat.id}
+                role="tab"
+                aria-selected={filter === cat.id}
+                onClick={() => setFilter(cat.id)}
+                className={`px-5 py-2 rounded-full font-poppins font-semibold text-[10px] uppercase tracking-widest transition-all focus:outline-none focus:ring-2 focus:ring-primary/40 ${
+                  filter === cat.id
+                    ? "bg-primary text-white shadow-md shadow-primary/20"
+                    : "bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700"
+                }`}
               >
-                {/* Hover glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-teal-50/60 to-transparent dark:from-teal-900/10 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl pointer-events-none" aria-hidden="true" />
-
-                {/* Placeholder shimmer block */}
-                <div className="w-full h-28 rounded-2xl bg-gradient-to-br from-slate-200 to-slate-100 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 dark:via-white/5 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" aria-hidden="true" />
-                  <card.icon className="w-8 h-8 text-slate-400 dark:text-slate-500" strokeWidth={1.5} />
-                </div>
-
-                <div className="space-y-1 relative z-10">
-                  <h3 className="font-poppins font-bold text-slate-800 dark:text-white text-sm">
-                    {card.title}
-                  </h3>
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
-                    {card.desc}
-                  </p>
-                </div>
-              </motion.div>
+                {cat.label}
+              </button>
             ))}
+          </div>
+
+          {/* Responsive Grid: 1 → 2 → 3 columns */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <AnimatePresence mode="popLayout">
+              {filteredItems.map((item, idx) => (
+                <motion.div
+                  key={item.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.35, delay: idx * 0.05 }}
+                  onClick={() => setLightboxIndex(idx)}
+                  className="group relative cursor-pointer overflow-hidden rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 shadow-sm hover:shadow-xl transition-all duration-300"
+                >
+                  {/* Image */}
+                  <div className="relative w-full h-64 overflow-hidden rounded-t-3xl">
+                    <Image
+                      src={item.imgUrl}
+                      alt={item.alt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    {/* Hover overlay with search icon */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 flex items-center justify-center transition-colors duration-300">
+                      <Search className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </div>
+
+                  {/* Caption bar */}
+                  <div className="p-5 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+                    <h3 className="font-poppins font-bold text-slate-900 dark:text-white text-sm">
+                      {item.title}
+                    </h3>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 font-inter mt-1 leading-relaxed">
+                      {item.caption}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         </div>
       </section>
 
-      {/* BOTTOM CTA STRIP */}
-      <section className="py-16 bg-gradient-to-br from-teal-600 to-emerald-700 dark:from-teal-800 dark:to-emerald-900" aria-label="Appointment call to action">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center space-y-6">
+      {/* ── 3. LIGHTBOX MODAL ── */}
+      <AnimatePresence>
+        {lightboxIndex !== null && (
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center p-4 backdrop-blur-md"
+            onClick={() => setLightboxIndex(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Image lightbox"
           >
-            <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-white">
-              Ready to Begin Your Healing Journey?
-            </h2>
-            <p className="text-sm text-teal-100 max-w-md mx-auto leading-relaxed">
-              Don't wait for the gallery — visit us in person or book your appointment with Dr. Panchireddi Anil Kumar today.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-              <Link
-                href="/book"
-                id="gallery-bottom-cta-book"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-teal-700 rounded-full font-poppins font-semibold text-sm shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-white/50"
-              >
-                <CalendarCheck className="w-4 h-4" />
-                Book Appointment
-              </Link>
-              <Link
-                href="/contact"
-                id="gallery-bottom-cta-contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-white/10 border border-white/20 text-white rounded-full font-poppins font-semibold text-sm transition-all duration-200 hover:bg-white/20 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-white/30"
-              >
-                <Phone className="w-4 h-4" />
-                Contact Us
-              </Link>
-            </div>
+            {/* Close */}
+            <button
+              onClick={() => setLightboxIndex(null)}
+              className="absolute top-6 right-6 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors focus:outline-none focus:ring-2 focus:ring-white/40"
+              aria-label="Close lightbox"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Prev */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxIndex((p) =>
+                  p !== null ? (p - 1 + filteredItems.length) % filteredItems.length : null
+                );
+              }}
+              className="absolute left-6 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors hidden md:block focus:outline-none"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            {/* Next */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxIndex((p) =>
+                  p !== null ? (p + 1) % filteredItems.length : null
+                );
+              }}
+              className="absolute right-6 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors hidden md:block focus:outline-none"
+              aria-label="Next image"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Image & info */}
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="max-w-3xl w-full text-center space-y-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="w-full h-80 sm:h-[450px] relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900">
+                <Image
+                  src={filteredItems[lightboxIndex].imgUrl}
+                  alt={filteredItems[lightboxIndex].alt}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 896px"
+                />
+              </div>
+              <div className="space-y-1 text-white">
+                <h3 className="font-poppins font-bold text-base sm:text-lg">
+                  {filteredItems[lightboxIndex].title}
+                </h3>
+                <p className="text-xs font-inter text-slate-400">
+                  {filteredItems[lightboxIndex].caption}
+                </p>
+              </div>
+              {/* Dot navigation */}
+              <div className="flex justify-center gap-1.5 pt-2">
+                {filteredItems.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setLightboxIndex(index)}
+                    className={`h-1.5 rounded-full transition-all ${
+                      lightboxIndex === index ? "w-6 bg-primary" : "w-2 bg-white/20"
+                    }`}
+                    aria-label={`Go to image ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
-        </div>
-      </section>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
