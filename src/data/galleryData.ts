@@ -32,7 +32,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Doctor Consulting Patient",
     caption: "Doctor Consultation with Patient",
     alt: "Doctor consulting a patient at Sarada Homeo Clinic",
-    image: "/images/gallery/waiting-area.jpg",  // ← swapped to waiting area photo
+    image: "/images/gallery/doctor-consultation.jpg",  // ← corrected to consulting photo
     category: "consultation",
   },
   {
@@ -56,7 +56,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Patient Waiting Area",
     caption: "Patient Waiting Area",
     alt: "Patient waiting area at Sarada Homeo Clinic",
-    image: "/images/gallery/doctor-consultation.jpg",         // ← swapped to consulting photo
+    image: "/images/gallery/waiting-area.jpg",         // ← corrected to waiting area photo
     category: "waiting",
   },
 ];
