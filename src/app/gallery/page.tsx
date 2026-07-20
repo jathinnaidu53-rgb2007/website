@@ -23,38 +23,31 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: 2,
-    category: "doctor",
-    title: "Dr. Panchireddi Anil Kumar",
-    desc: "BHMS registered practitioner (No. 5732) at his chamber desk.",
-    imgUrl: "/images/doctor/doctor-portrait.jpg"
-  },
-  {
-    id: 3,
     category: "consultation",
     title: "Doctor Consulting Patient",
     desc: "Dr. Panchireddi Anil Kumar consulting a patient in the consultation room.",
     imgUrl: "/images/gallery/doctor-consultation.jpg"
   },
   {
-    id: 4,
-    category: "facilities",
-    title: "Patient Waiting Area",
-    desc: "Spacious patient waiting area and lobby spaces.",
-    imgUrl: "/images/gallery/waiting-area.jpg"
-  },
-  {
-    id: 5,
+    id: 3,
     category: "facilities",
     title: "Homeopathic Remedy Shelves",
     desc: "In-house stock of certified homeopathic medicine dilutions.",
     imgUrl: "/images/gallery/medicine-section.jpg"
   },
   {
-    id: 6,
+    id: 4,
+    category: "doctor",
+    title: "Dr. Panchireddi Anil Kumar",
+    desc: "BHMS registered practitioner (No. 5732) at his chamber desk.",
+    imgUrl: "/images/doctor/doctor-portrait.jpg"
+  },
+  {
+    id: 5,
     category: "facilities",
-    title: "Consultation Chambers Stock",
-    desc: "Systematic stock of dilutions and remedies for root-cause healing.",
-    imgUrl: "/images/gallery/consultation-room.jpg"
+    title: "Patient Waiting Area",
+    desc: "Spacious patient waiting area and lobby spaces.",
+    imgUrl: "/images/gallery/waiting-area.jpg"
   }
 ];
 
