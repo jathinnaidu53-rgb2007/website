@@ -21,12 +21,20 @@ We have successfully performed the final doctor portrait, content, branding, and
   * **Clinic Exterior:** `clinic-exterior.jpg` (Signage and entrance)
   * **Doctor Consulting:** `doctor-consultation.jpg` (Patient consulting frame)
   * **Waiting Area:** `waiting-area.jpg` (Lobby waiting spaces)
-  * **Medicine stock:** `medicine-section.jpg` and `consultation-room.jpg` (Stocked remedy dilutions)
+  * **Medicine stock:** `medicine-section.jpg` (Stocked remedy dilutions)
 * Integrated these across the Hero, About, Book, Contact, and Gallery components.
 
-### 4. Gallery & Contact Enhancements (Completed)
-* **Gallery Page:** Categorized actual photos (`clinic`, `doctor`, `consultation`, `facilities`) with filters, smooth animations, and lightbox preview.
-* **Contact Page Grid:** Created a dedicated **WhatsApp card** alongside Address, Timings, Email, and Phone cards with "Copy to Clipboard" hooks and direct quick action links (Call Now, WhatsApp Now, Open in Maps).
+### 4. Ordered Gallery Page (Completed)
+* Configured the `galleryItems` array in `src/app/gallery/page.tsx` to list the 5 photos in the exact order requested:
+  1. **Sarada Homeo Clinic Exterior** (`clinic-exterior.jpg`)
+  2. **Doctor Consulting Patient** (`doctor-consultation.jpg`)
+  3. **Homeopathic Remedy Shelves** (`medicine-section.jpg`)
+  4. **Dr. Panchireddi Anil Kumar** (`doctor-portrait.jpg`)
+  5. **Patient Waiting Area** (`waiting-area.jpg`)
+
+### 5. Contact Page Grid & WhatsApp Integration (Completed)
+* Re-aligned contact options into a 5-column grid mapping **WhatsApp**, **Phone**, **Email**, **Clinic Address**, and **Clinic Timings**.
+* Enabled copy-to-clipboard actions and direct buttons (Call Now, Open in Maps, WhatsApp Now).
 
 ---
 
