@@ -33,7 +33,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Premium homeopathic healthcare under the expert guidance of Dr. Panchireddy Anil Kumar. Committed to natural, safe, and root-cause treatments to restore your long-term health.
+              Premium homeopathic healthcare under the expert guidance of Dr. Panchireddi Anil Kumar. Committed to natural, safe, and root-cause treatments to restore your long-term health.
             </p>
           </div>
 

@@ -8,14 +8,14 @@ import FloatingWidgets from "@/components/FloatingWidgets";
 // ─── Site-wide Metadata ───────────────────────────────────────────────────────
 export const metadata: Metadata = {
   title: {
-    default: "Sarada Homeo Clinic | Dr. Panchireddy Anil Kumar | Best Homeopathy Clinic in Srikakulam",
+    default: "Sarada Homeo Clinic | Dr. Panchireddi Anil Kumar | Best Homeopathy Clinic in Srikakulam",
     template: "%s | Sarada Homeo Clinic",
   },
   description:
-    "Sarada Homeo Clinic provides trusted, personalized, and holistic homeopathic treatment in Srikakulam, Andhra Pradesh. Led by Dr. Panchireddy Anil Kumar (Reg. No. 5732). Book an appointment today.",
+    "Sarada Homeo Clinic provides trusted, personalized, and holistic homeopathic treatment in Srikakulam, Andhra Pradesh. Led by Dr. Panchireddi Anil Kumar (Reg. No. 5732). Book an appointment today.",
   keywords: [
     "Sarada Homeo Clinic",
-    "Dr. Panchireddy Anil Kumar",
+    "Dr. Panchireddi Anil Kumar",
     "Homeopathy Clinic Srikakulam",
     "Homeopathic Physician Srikakulam",
     "Best Homeopathy Doctor Srikakulam",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "Andhra Pradesh Homeopathy",
     "BHMS doctor Srikakulam",
   ],
-  authors: [{ name: "Dr. Panchireddy Anil Kumar" }],
+  authors: [{ name: "Dr. Panchireddi Anil Kumar" }],
   creator: "Sarada Homeo Clinic",
   publisher: "Sarada Homeo Clinic",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://saradahomeoclinic.com"),
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
     canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://saradahomeoclinic.com",
   },
   openGraph: {
-    title: "Sarada Homeo Clinic | Dr. Panchireddy Anil Kumar | Srikakulam",
+    title: "Sarada Homeo Clinic | Dr. Panchireddi Anil Kumar | Srikakulam",
     description:
-      "Trusted, personalized, and holistic homeopathic treatment in Srikakulam, Andhra Pradesh. Led by Dr. Panchireddy Anil Kumar (Reg. No. 5732). Book an appointment today.",
+      "Trusted, personalized, and holistic homeopathic treatment in Srikakulam, Andhra Pradesh. Led by Dr. Panchireddi Anil Kumar (Reg. No. 5732). Book an appointment today.",
     url: process.env.NEXT_PUBLIC_SITE_URL || "https://saradahomeoclinic.com",
     siteName: "Sarada Homeo Clinic",
     locale: "en_IN",
@@ -44,15 +44,15 @@ export const metadata: Metadata = {
         url: "/images/doctor.jpg",
         width: 1200,
         height: 630,
-        alt: "Dr. Panchireddy Anil Kumar – Sarada Homeo Clinic, Srikakulam",
+        alt: "Dr. Panchireddi Anil Kumar – Sarada Homeo Clinic, Srikakulam",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sarada Homeo Clinic | Dr. Panchireddy Anil Kumar | Srikakulam",
+    title: "Sarada Homeo Clinic | Dr. Panchireddi Anil Kumar | Srikakulam",
     description:
-      "Trusted homeopathic treatment in Srikakulam, Andhra Pradesh. Led by Dr. Panchireddy Anil Kumar (Reg. No. 5732).",
+      "Trusted homeopathic treatment in Srikakulam, Andhra Pradesh. Led by Dr. Panchireddi Anil Kumar (Reg. No. 5732).",
     images: ["/images/doctor.jpg"],
   },
   icons: {
@@ -98,7 +98,7 @@ const clinicSchema = {
   hasMap: "https://maps.google.com/?q=Sarada+Homeo+Clinic+New+Colony+Srikakulam",
   founder: {
     "@type": "Person",
-    name: "Dr. Panchireddy Anil Kumar",
+    name: "Dr. Panchireddi Anil Kumar",
     jobTitle: "Homeopathic Physician",
   },
   openingHoursSpecification: [
@@ -114,9 +114,9 @@ const doctorSchema = {
   "@context": "https://schema.org",
   "@type": "Physician",
   "@id": "https://saradahomeoclinic.com/#physician",
-  name: "Dr. Panchireddy Anil Kumar",
+  name: "Dr. Panchireddi Anil Kumar",
   givenName: "Anil Kumar",
-  familyName: "Panchireddy",
+  familyName: "Panchireddi",
   medicalSpecialty: "HomeopathicPhysician",
   telephone: "+919440955008",
   image: "https://saradahomeoclinic.com/images/doctor.jpg",

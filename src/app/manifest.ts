@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Sarada Homeo Clinic",
     short_name: "Sarada Homeo",
     description:
-      "Trusted homeopathic healthcare in Srikakulam, Andhra Pradesh. Led by Dr. Panchireddy Anil Kumar (Reg. No. 5732).",
+      "Trusted homeopathic healthcare in Srikakulam, Andhra Pradesh. Led by Dr. Panchireddi Anil Kumar (Reg. No. 5732).",
     start_url: "/",
     display: "standalone",
     background_color: "#f9f9fc",

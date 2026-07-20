@@ -123,6 +123,7 @@ export default function Contact() {
   const phoneCopy = useCopy();
   const emailCopy = useCopy();
   const addressCopy = useCopy();
+  const whatsappCopy = useCopy();
 
   const addToast = useCallback((message: string, type: ToastType = "success") => {
     const id = ++toastCounter.current;
@@ -209,8 +210,8 @@ Thank you.`;
               </div>
               <div className="lg:col-span-5 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-md">
                 <Image
-                  src="/images/doctor.jpg"
-                  alt="Dr. Panchireddy Anil Kumar – Sarada Homeo Clinic, Srikakulam"
+                  src="/images/doctor/doctor-portrait.jpg"
+                  alt="Dr. Panchireddi Anil Kumar – Sarada Homeo Clinic, Srikakulam"
                   fill
                   className="object-cover object-top"
                   priority
@@ -223,7 +224,7 @@ Thank you.`;
         {/* 2. CONTACT DETAILS GRID */}
         <section className="py-12 bg-white dark:bg-slate-900" aria-label="Contact details">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
               <InfoCard
                 icon={Phone}
                 title="Phone"
@@ -235,6 +236,24 @@ Thank you.`;
                   +91 94409 55008
                 </a>
                 <p className="text-[10px] text-slate-400">Call during clinic hours</p>
+              </InfoCard>
+
+              <InfoCard
+                icon={MessageSquare}
+                title="WhatsApp"
+                copyValue="919440955008"
+                onCopy={whatsappCopy.copy}
+                copied={whatsappCopy.copied}
+              >
+                <a
+                  href="https://wa.me/919440955008?text=Hello%20Doctor%2C%20I%20have%20an%20enquiry."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors font-semibold"
+                >
+                  +91 94409 55008
+                </a>
+                <p className="text-[10px] text-slate-400">Chat for details</p>
               </InfoCard>
 
               <InfoCard
@@ -429,7 +448,7 @@ Thank you.`;
                 >
                   <iframe
                     title="Sarada Homeo Clinic – New Colony, Srikakulam, Andhra Pradesh"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3793.626815340156!2d83.89433607597505!3d18.297442182871038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3c14ff0fffffff%3A0x673990cb8c2275eb!2sNew%20Colony%2C%20Srikakulam%2C%20Andhra%20Pradesh%20532001!5e0!3m2!1sen!2sin!4v1719830000000!5m2!1sen!2sin"
+                    src="https://maps.google.com/maps?q=Sarada+Homeo+Clinic+New+Colony+Srikakulam&t=&z=16&ie=UTF8&iwloc=&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}

@@ -7,7 +7,7 @@ import { X, Search, Image as ImageIcon, ChevronLeft, ChevronRight } from "lucide
 
 interface GalleryItem {
   id: number;
-  category: "clinic" | "consultation" | "waiting" | "pharmacy" | "certificates";
+  category: "clinic" | "doctor" | "consultation" | "facilities";
   title: string;
   desc: string;
   imgUrl: string;
@@ -17,44 +17,44 @@ const galleryItems: GalleryItem[] = [
   {
     id: 1,
     category: "clinic",
-    title: "Clinic Spaces",
-    desc: "Clean and modern waiting lobby space.",
-    imgUrl: "/images/screens/home.png"
+    title: "Sarada Homeo Clinic Exterior",
+    desc: "Branding entrance front view of Sarada Homeo Clinic, Srikakulam.",
+    imgUrl: "/images/gallery/clinic-exterior.jpg"
   },
   {
     id: 2,
-    category: "consultation",
-    title: "Doctor's Consult Chamber",
-    desc: "Private consultation room of Dr. Panchireddy Anil Kumar.",
-    imgUrl: "/images/screens/about.png"
+    category: "doctor",
+    title: "Dr. Panchireddi Anil Kumar",
+    desc: "BHMS registered practitioner (No. 5732) at his chamber desk.",
+    imgUrl: "/images/doctor/doctor-portrait.jpg"
   },
   {
     id: 3,
-    category: "waiting",
-    title: "Patient Lounge",
-    desc: "Comfortable and spacious patient waiting lounge.",
-    imgUrl: "/images/screens/contact.png"
+    category: "consultation",
+    title: "Doctor Consulting Patient",
+    desc: "Dr. Panchireddi Anil Kumar consulting a patient in the consultation room.",
+    imgUrl: "/images/gallery/doctor-consultation.jpg"
   },
   {
     id: 4,
-    category: "pharmacy",
-    title: "Homeopathic Pharmacy & Booking",
-    desc: "In-house pharmacy stocked with certified remedies.",
-    imgUrl: "/images/screens/book.png"
+    category: "facilities",
+    title: "Patient Waiting Area",
+    desc: "Spacious patient waiting area and lobby spaces.",
+    imgUrl: "/images/gallery/waiting-area.jpg"
   },
   {
     id: 5,
-    category: "certificates",
-    title: "Medical Registration Certificate",
-    desc: "Official Andhra Pradesh Board Registration Document (No. 5732).",
-    imgUrl: "/images/screens/logo_plus.png"
+    category: "facilities",
+    title: "Homeopathic Remedy Shelves",
+    desc: "In-house stock of certified homeopathic medicine dilutions.",
+    imgUrl: "/images/gallery/medicine-section.jpg"
   },
   {
     id: 6,
-    category: "clinic",
-    title: "Reception Area",
-    desc: "Front desk for scheduling appointments and queries.",
-    imgUrl: "/images/screens/home.png"
+    category: "facilities",
+    title: "Consultation Chambers Stock",
+    desc: "Systematic stock of dilutions and remedies for root-cause healing.",
+    imgUrl: "/images/gallery/consultation-room.jpg"
   }
 ];
 
@@ -113,11 +113,10 @@ export default function Gallery() {
           <div className="flex flex-wrap justify-center gap-2">
             {[
               { id: "all", name: "All Spaces" },
-              { id: "clinic", name: "Clinic Spaces" },
+              { id: "clinic", name: "Clinic" },
+              { id: "doctor", name: "Doctor" },
               { id: "consultation", name: "Consultation" },
-              { id: "waiting", name: "Waiting Lounge" },
-              { id: "pharmacy", name: "Remedy Pharmacy" },
-              { id: "certificates", name: "Certificates" }
+              { id: "facilities", name: "Facilities" }
             ].map((cat) => (
               <button
                 key={cat.id}

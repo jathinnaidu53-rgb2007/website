@@ -56,7 +56,7 @@ export default function About() {
               className="lg:col-span-6 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800 group"
             >
               <Image
-                src="/images/screens/home.png"
+                src="/images/gallery/clinic-exterior.jpg"
                 alt="Sarada Homeo Clinic Journey"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -153,8 +153,8 @@ export default function About() {
             {/* Left Photo */}
             <div className="lg:col-span-4 relative aspect-[3/4] rounded-2xl overflow-hidden border border-slate-800 shadow-md group">
               <Image
-                src="/images/doctor.jpg"
-                alt="Dr. Panchireddy Anil Kumar"
+                src="/images/doctor/doctor-portrait.jpg"
+                alt="Dr. Panchireddi Anil Kumar"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -164,7 +164,7 @@ export default function About() {
             <div className="lg:col-span-8 space-y-6">
               <div className="space-y-2">
                 <span className="text-[10px] text-primary dark:text-accent font-bold uppercase tracking-wider">Chief Consultant</span>
-                <h3 className="text-2xl font-poppins font-bold text-white">Dr. Panchireddy Anil Kumar</h3>
+                <h3 className="text-2xl font-poppins font-bold text-white">Dr. Panchireddi Anil Kumar</h3>
                 <p className="text-xs text-primary dark:text-accent font-semibold">B.H.M.S, Homeopathic Specialist</p>
               </div>
 

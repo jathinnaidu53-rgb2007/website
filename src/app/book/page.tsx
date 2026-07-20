@@ -249,8 +249,8 @@ Thank you.`;
               </div>
               <div className="lg:col-span-5 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-md">
                 <Image
-                  src="/images/doctor.jpg"
-                  alt="Dr. Panchireddy Anil Kumar – Sarada Homeo Clinic"
+                  src="/images/doctor/doctor-portrait.jpg"
+                  alt="Dr. Panchireddi Anil Kumar – Sarada Homeo Clinic"
                   fill
                   className="object-cover object-top"
                   priority
@@ -281,7 +281,7 @@ Thank you.`;
                       <User className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" />
                       <div>
                         <p className="font-bold text-slate-800 dark:text-white">Lead Physician</p>
-                        <p>Dr. Panchireddy Anil Kumar, BHMS</p>
+                        <p>Dr. Panchireddi Anil Kumar, BHMS</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-2.5">

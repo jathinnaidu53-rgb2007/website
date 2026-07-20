@@ -180,7 +180,7 @@ export default function Home() {
               </h1>
               
               <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl">
-                Experience safe, chemical-free and personalized holistic healthcare at Sarada Homeo Clinic. Led by Dr. Panchireddy Anil Kumar, we treat the root cause, not just symptoms.
+                Experience safe, chemical-free and personalized holistic healthcare at Sarada Homeo Clinic. Led by Dr. Panchireddi Anil Kumar, we treat the root cause, not just symptoms.
               </p>
 
               {/* Timing Badge */}
@@ -194,18 +194,26 @@ export default function Home() {
               </div>
 
               {/* Call-to-actions */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Link
                   href="/book"
-                  className="px-6 py-3.5 bg-primary hover:bg-primary/95 text-white font-poppins text-xs font-bold uppercase tracking-wider rounded-xl shadow-md transition-all hover:scale-105"
+                  className="px-5 py-3.5 bg-primary hover:bg-primary/95 text-white font-poppins text-xs font-bold uppercase tracking-wider rounded-xl shadow-md transition-all hover:scale-105"
                 >
                   Book Appointment
                 </Link>
                 <a
-                  href="tel:+919440955008"
-                  className="px-6 py-3.5 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-poppins text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all"
+                  href="https://wa.me/919440955008"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-3.5 bg-[#25D366] hover:bg-[#22c55e] text-white font-poppins text-xs font-bold uppercase tracking-wider rounded-xl shadow-md transition-all hover:scale-105"
                 >
-                  📞 Call +91 94409 55008
+                  WhatsApp Now
+                </a>
+                <a
+                  href="tel:+919440955008"
+                  className="px-5 py-3.5 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-350 hover:bg-slate-50 dark:hover:bg-slate-850 font-poppins text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all"
+                >
+                  Call +91 94409 55008
                 </a>
               </div>
 
@@ -235,8 +243,8 @@ export default function Home() {
             >
               <div className="relative w-full max-w-md aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-900 group">
                 <Image
-                  src="/images/doctor.jpg"
-                  alt="Dr. Panchireddy Anil Kumar"
+                  src="/images/doctor/doctor-portrait.jpg"
+                  alt="Dr. Panchireddi Anil Kumar"
                   fill
                   sizes="(max-w-768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -289,7 +297,7 @@ export default function Home() {
                 Decades of Expertise in Holistic Healing
               </h2>
               <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                Dr. Panchireddy Anil Kumar (Reg. No. 5732) is a visionary practitioner dedicated to the art of homeopathy. Under his leadership, Sarada Homeo Clinic has grown into a beacon of healing.
+                Dr. Panchireddi Anil Kumar (Reg. No. 5732) is a visionary practitioner dedicated to the art of homeopathy. Under his leadership, Sarada Homeo Clinic has grown into a beacon of healing.
               </p>
               
               {/* Bullet checklist */}
@@ -312,16 +320,16 @@ export default function Home() {
             {/* Right Images grid - Mosaic style */}
             <div className="lg:col-span-7 grid grid-cols-12 gap-4">
               <div className="col-span-8 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-md group">
-                <Image src="/images/screens/home.png" alt="Clinic Interior" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                <Image src="/images/gallery/clinic-exterior.jpg" alt="Sarada Homeo Clinic Srikakulam exterior board" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
               </div>
               <div className="col-span-4 relative aspect-square rounded-3xl overflow-hidden shadow-md group">
-                <Image src="/images/screens/logo_plus.png" alt="Logo" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                <Image src="/images/gallery/medicine-section.jpg" alt="Homeopathic dilutions shelves stock" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
               </div>
               <div className="col-span-4 relative aspect-square rounded-3xl overflow-hidden shadow-md group">
-                <Image src="/images/screens/about.png" alt="Doctor Consultation" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                <Image src="/images/gallery/doctor-consultation.jpg" alt="Dr. Panchireddi Anil Kumar consulting a patient" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
               </div>
               <div className="col-span-8 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-md group">
-                <Image src="/images/screens/contact.png" alt="Medicine Room" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                <Image src="/images/gallery/waiting-area.jpg" alt="Patient waiting lobby seating" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
               </div>
             </div>
           </div>
