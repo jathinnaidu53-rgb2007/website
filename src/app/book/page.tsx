@@ -335,7 +335,7 @@ Thank you.`;
                     <span>WhatsApp Support</span>
                   </a>
                   <a
-                    href="https://www.google.com/maps?q=Sarada+Homeo+Clinic+New+Colony+Srikakulam+Andhra+Pradesh"
+                    href="https://www.google.com/maps/place/Sarada+Homeo+Clinic/@18.296722,83.894879,16.5z/data=!4m6!3m5!1s0x3a3c1508ab026f8d:0x463273e970a5abf1!8m2!3d18.296722!4d83.894879!16s%2Fg%2F11wsp3ybd0"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-3 px-5 py-3 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 rounded-xl transition-all font-semibold text-xs"
@@ -642,7 +642,7 @@ Thank you.`;
                 <p className="text-xs text-slate-500">Opposite Diamond Park, New Colony, Srikakulam – 532001, Andhra Pradesh</p>
               </div>
               <a
-                href="https://www.google.com/maps?q=Sarada+Homeo+Clinic+New+Colony+Srikakulam+Andhra+Pradesh"
+                href="https://www.google.com/maps/place/Sarada+Homeo+Clinic/@18.296722,83.894879,16.5z/data=!4m6!3m5!1s0x3a3c1508ab026f8d:0x463273e970a5abf1!8m2!3d18.296722!4d83.894879!16s%2Fg%2F11wsp3ybd0"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white text-xs font-bold rounded-xl hover:bg-primary/90 transition-all shrink-0"
@@ -655,7 +655,7 @@ Thank you.`;
             <div className="w-full aspect-[2/1] rounded-3xl overflow-hidden shadow-sm border border-slate-150 dark:border-slate-850 relative min-h-[300px]">
               <iframe
                 title="Sarada Homeo Clinic location map – Srikakulam, Andhra Pradesh"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3793.626815340156!2d83.89433607597505!3d18.297442182871038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3c14ff0fffffff%3A0x673990cb8c2275eb!2sNew%20Colony%2C%20Srikakulam%2C%20Andhra%20Pradesh%20532001!5e0!3m2!1sen!2sin!4v1719830000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15174.638432106718!2d83.894879!3d18.296722!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3c1508ab026f8d%3A0x463273e970a5abf1!2sSarada%20Homeo%20Clinic!5e0!3m2!1sen!2sin!4v1719830000000!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
