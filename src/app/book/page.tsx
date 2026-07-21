@@ -154,14 +154,14 @@ export default function BookAppointment() {
       const genderLabel = data.gender.charAt(0).toUpperCase() + data.gender.slice(1);
       const timeLabel = data.preferredTime.charAt(0).toUpperCase() + data.preferredTime.slice(1);
 
-      const messageText = `🏥 Sarada Homeo Clinic
+      const messageText = `🏥 *Sarada Homeo Clinic*
 
-📌 NEW APPOINTMENT REQUEST
+📌 *NEW APPOINTMENT REQUEST*
 
 👤 Patient Name:
 ${data.name}
 
-📱 Mobile:
+📱 Mobile Number:
 ${data.mobile}
 
 🎂 Age:
@@ -183,9 +183,19 @@ ${data.preferredDate}
 ${timeLabel}
 
 📝 Additional Notes:
-${data.concern}
+${data.concern || "None"}
 
-Please confirm my appointment.
+━━━━━━━━━━━━━━━━━━━━
+
+Kindly review this appointment request.
+
+Please reply with:
+
+✅ APPOINTMENT CONFIRMED
+
+or
+
+❌ APPOINTMENT NOT AVAILABLE
 
 Thank you.`;
 
@@ -370,10 +380,10 @@ Thank you.`;
                       </motion.div>
                       <div className="space-y-2">
                         <h2 className="text-xl font-poppins font-bold text-slate-900 dark:text-white">
-                          Appointment Registered!
+                          Appointment Request Sent!
                         </h2>
-                        <p className="text-xs text-slate-500 max-w-sm mx-auto leading-relaxed">
-                          We have received your request. Dr. Anil Kumar's clinic coordinator will call you within 2 hours to confirm your slot.
+                        <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
+                          Your appointment request has been sent to Sarada Homeo Clinic via WhatsApp. Your appointment is confirmed only after the doctor replies with confirmation.
                         </p>
                       </div>
                       <div className="inline-block px-6 py-3 bg-primary/10 rounded-xl">
@@ -388,12 +398,12 @@ Thank you.`;
                           Book Another Appointment
                         </button>
                         <a
-                          href={`https://wa.me/919440955008?text=Hello%2C%20my%20booking%20reference%20is%20${bookingRef}.%20I%20would%20like%20to%20confirm%20my%20appointment.`}
+                          href="https://wa.me/919440955008"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="px-6 py-2.5 bg-[#25D366] text-white font-semibold rounded-xl text-xs transition-all hover:bg-[#22c55e]"
                         >
-                          Confirm via WhatsApp
+                          Open WhatsApp Chat
                         </a>
                       </div>
                     </motion.div>
@@ -607,22 +617,22 @@ Thank you.`;
                           type="submit"
                           disabled={submitting}
                           className="w-full py-3.5 bg-primary hover:bg-primary/95 disabled:opacity-60 disabled:cursor-not-allowed text-white font-poppins font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all hover:scale-[1.01] flex items-center justify-center gap-2.5 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
-                          aria-label={submitting ? "Submitting appointment request…" : "Confirm appointment request"}
+                          aria-label={submitting ? "Sending appointment request…" : "Send appointment request"}
                         >
                           {submitting ? (
                             <>
                               <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" aria-hidden="true" />
-                              <span>Submitting…</span>
+                              <span>Sending…</span>
                             </>
                           ) : (
                             <>
                               <Calendar className="w-4 h-4" aria-hidden="true" />
-                              <span>Confirm Appointment Request</span>
+                              <span>Send Appointment Request</span>
                             </>
                           )}
                         </button>
-                        <p className="text-[10px] text-center text-slate-400">
-                          ✔ We will call you within 2 hours to confirm your scheduled slot. Your data is kept private.
+                        <p className="text-[10px] text-center text-slate-500 dark:text-slate-400 leading-relaxed max-w-sm mx-auto">
+                          ℹ️ Appointment requests are sent directly to the doctor's WhatsApp. Your booking is confirmed only after the doctor approves your request.
                         </p>
                       </form>
                     </motion.div>
