@@ -9,17 +9,18 @@
 We have successfully performed the final doctor portrait, content, branding, asset updates, exact maps coordinates update, centralized data mapping, and PWA Install Prompt implementation to customize the clinic's public presence with real photography and PWA capabilities prior to Vercel deployment.
 
 ### 1. Exact Google Maps Location (Sarada Homeo Clinic Pin)
-* **Official Embed Iframe:** Integrated the official Google Maps Embed URL for **`Sarada Homeo Clinic`** at New Colony, Srikakulam.
+* **Official Embed Iframe:** Integrated the official Google Maps Embed URL generated directly from the clinic's location:
+  `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3788.1186742381587!2d83.89923327371747!3d18.296180282754328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3c159ddd9db8ef%3A0x386449b333ffff7f!2sSarada%20Homeo%20Clinic!5e0!3m2!1sen!2sin!4v1784636364984!5m2!1sen!2sin`
   * Embed frames are fully responsive, support rounded corners, lazy loading, full-screen options, and strict security referrer policies.
   * Added `title="Sarada Homeo Clinic Location"` and `referrerPolicy="strict-origin-when-cross-origin"` attributes.
-* **Directions Links & Buttons:** Updated all directions buttons and footer addresses across layout, book, contact, and footer files to link directly to the official place listing:
-  * `https://www.google.com/maps/place/Sarada+Homeo+Clinic/@18.296722,83.894879,16.5z/data=!4m6!3m5!1s0x3a3c1508ab026f8d:0x463273e970a5abf1!8m2!3d18.296722!4d83.894879!16s%2Fg%2F11wsp3ybd0`
+* **Directions Links & Buttons:** Updated all directions buttons and footer addresses across layout, book, contact, and footer files to link directly to the official business listing:
+  * `https://www.google.com/maps?cid=4063544908076580735`
 * **JSON-LD Schema Integration:** Configured numeric Coordinates inside the schema block in `layout.tsx`:
   ```json
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 18.296722,
-    "longitude": 83.894879
+    "latitude": 18.29618,
+    "longitude": 83.899233
   }
   ```
 
