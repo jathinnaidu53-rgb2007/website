@@ -30,7 +30,6 @@ const bookingSchema = z.object({
     .string()
     .min(10, "Mobile number must be at least 10 digits")
     .regex(/^[0-9+\-\s()]+$/, "Enter a valid mobile number"),
-  email: z.string().email("Enter a valid email address").optional().or(z.literal("")),
   age: z
     .string()
     .min(1, "Age is required")
@@ -477,21 +476,7 @@ Thank you.`;
                           </div>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                          <div className="sm:col-span-2">
-                            <label htmlFor="email" className="sr-only">Email Address</label>
-                            <input
-                              id="email"
-                              type="email"
-                              placeholder="Email Address (Optional)"
-                              autoComplete="email"
-                              inputMode="email"
-                              aria-invalid={!!errors.email}
-                              {...register("email")}
-                              className={fieldClass(!!errors.email)}
-                            />
-                            {errorMsg(errors.email?.message)}
-                          </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div>
                             <label htmlFor="age" className="sr-only">Age</label>
                             <input
@@ -509,9 +494,6 @@ Thank you.`;
                             />
                             {errorMsg(errors.age?.message)}
                           </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div className="relative">
                             <label htmlFor="gender" className="sr-only">Gender</label>
                             <select
@@ -529,23 +511,24 @@ Thank you.`;
                             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" aria-hidden="true" />
                             {errorMsg(errors.gender?.message)}
                           </div>
-                          <div className="relative">
-                            <label htmlFor="service" className="sr-only">Treatment Service</label>
-                            <select
-                              id="service"
-                              aria-required="true"
-                              aria-invalid={!!errors.service}
-                              {...register("service")}
-                              className={`${fieldClass(!!errors.service)} appearance-none pr-10 cursor-pointer`}
-                            >
-                              <option value="">Select a service *</option>
-                              {services.map((s) => (
-                                <option key={s} value={s}>{s}</option>
-                              ))}
-                            </select>
-                            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" aria-hidden="true" />
-                            {errorMsg(errors.service?.message)}
-                          </div>
+                        </div>
+
+                        <div className="relative">
+                          <label htmlFor="service" className="sr-only">Treatment Service</label>
+                          <select
+                            id="service"
+                            aria-required="true"
+                            aria-invalid={!!errors.service}
+                            {...register("service")}
+                            className={`${fieldClass(!!errors.service)} appearance-none pr-10 cursor-pointer w-full`}
+                          >
+                            <option value="">Select a service *</option>
+                            {services.map((s) => (
+                              <option key={s} value={s}>{s}</option>
+                            ))}
+                          </select>
+                          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" aria-hidden="true" />
+                          {errorMsg(errors.service?.message)}
                         </div>
 
                         <div>
