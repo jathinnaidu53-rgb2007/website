@@ -447,14 +447,14 @@ Thank you.`;
                   aria-label="Interactive clinic location map"
                 >
                   <iframe
-                    title="Sarada Homeo Clinic – New Colony, Srikakulam, Andhra Pradesh"
+                    title="Sarada Homeo Clinic Location"
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15174.638432106718!2d83.894879!3d18.296722!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3c1508ab026f8d%3A0x463273e970a5abf1!2sSarada%20Homeo%20Clinic!5e0!3m2!1sen!2sin!4v1719830000000!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
+                    referrerPolicy="strict-origin-when-cross-origin"
                   />
                 </div>
 

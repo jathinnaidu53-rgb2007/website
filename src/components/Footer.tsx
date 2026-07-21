@@ -72,9 +72,14 @@ export default function Footer() {
             <ul className="space-y-4 text-xs">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4.5 h-4.5 text-primary shrink-0 mt-0.5" />
-                <span className="text-slate-400 leading-relaxed">
+                <a
+                  href="https://www.google.com/maps/place/Sarada+Homeo+Clinic/@18.296722,83.894879,16.5z/data=!4m6!3m5!1s0x3a3c1508ab026f8d:0x463273e970a5abf1!8m2!3d18.296722!4d83.894879!16s%2Fg%2F11wsp3ybd0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-400 hover:text-primary transition-colors leading-relaxed"
+                >
                   Opposite Diamond Park, New Colony, Srikakulam, Andhra Pradesh, 532001, India
-                </span>
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4.5 h-4.5 text-primary shrink-0" />

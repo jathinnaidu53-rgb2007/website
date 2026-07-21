@@ -92,8 +92,8 @@ const clinicSchema = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: "18.296722",
-    longitude: "83.894879",
+    latitude: 18.296722,
+    longitude: 83.894879,
   },
   medicalSpecialty: "Homeopathy",
   hasMap: "https://www.google.com/maps/place/Sarada+Homeo+Clinic/@18.296722,83.894879,16.5z/data=!4m6!3m5!1s0x3a3c1508ab026f8d:0x463273e970a5abf1!8m2!3d18.296722!4d83.894879!16s%2Fg%2F11wsp3ybd0",
