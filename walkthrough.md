@@ -6,16 +6,20 @@
 
 ## 🛠️ Work Accomplished (Pre-Launch Content Migration)
 
-We have successfully performed the final doctor portrait, content, branding, asset updates, exact maps coordinates update, centralized data mapping, and PWA Install Prompt implementation to customize the clinic's public presence with real photography and PWA capabilities prior to Vercel deployment.
+We have successfully performed the final doctor portrait, content, branding, asset updates, exact maps coordinates update, centralized data mapping, and Persistent PWA Install Banner implementation to customize the clinic's public presence with real photography and PWA capabilities prior to Vercel deployment.
 
-### 1. Chrome PWA Install Prompt (Production Ready)
-* **Custom Install Prompt:** Built a responsive, accessible `<PwaInstallPrompt />` component matching clinic branding (glassmorphic theme, `rounded-3xl` cards, green and white colors).
+### 1. Persistent PWA Install Banner (Production Ready)
+* **Custom Install Prompt:** Configured the responsive, accessible `<PwaInstallPrompt />` component matching clinic branding (glassmorphic theme, `rounded-3xl` cards, green and white colors).
+* **Persistent Behavior:**
+  * Removed all 7-day dismissed delay indicators. Clicking "Not Now" or the close icon only closes the banner for the current visit.
+  * Reloading the browser or reopening the website displays the banner again.
+  * The banner is only permanently hidden once the app is successfully installed (`localStorage.setItem("pwa-installed", "true")`).
+* **Content:**
+  * Title: `📲 Install Sarada Homeo Clinic`
+  * Subtitle/Description: `Install the app for one-tap access to appointments, clinic timings, contact information, and WhatsApp booking.`
 * **Framer Motion Animations:** Implemented smooth slide-in/fade-in entrance (`y 60 → 0`, `opacity 0 → 1`) and slide-out/fade-out exit (`y 0 → 60`, `opacity 1 → 0`) transition of `300ms`.
 * **State Management & Local Storage:**
   * Checks standard `display-mode` media queries (`window.matchMedia("(display-mode: standalone)")`) and iOS `navigator.standalone` to detect already installed instances.
-  * Hides install card permanently when PWA installation is accepted (`localStorage.setItem("pwa-installed", "true")`).
-  * Dismisses popup for **7 days** when user clicks "Not Now" or closes the prompt (`localStorage.setItem("pwa-dismissed-until", expireTime)`).
-* **Service Worker Registration:** Created `public/sw.js` with a basic `fetch` listener satisfying Chrome's PWA installability requirements and registered it inside layout.
 * **Layout Safeguards:**
   * Desktop: positioned floating card at `bottom-6 right-[88px]` to stack perfectly alongside contact floating widgets without overlapping them.
   * Mobile: positioned bottom-sheet at the bottom overlaying the viewport.
