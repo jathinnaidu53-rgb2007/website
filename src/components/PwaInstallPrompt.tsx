@@ -36,10 +36,9 @@ export default function PwaInstallPrompt() {
       (window.navigator as any).standalone === true;
 
     const isInstalled = localStorage.getItem("pwa-installed") === "true";
-    const dismissedUntil = localStorage.getItem("pwa-dismissed-until");
-    const isDismissed = dismissedUntil && Date.now() < parseInt(dismissedUntil, 10);
 
-    if (isStandalone || isInstalled || isDismissed) {
+    // Only hide if PWA is already installed or standalone mode is active
+    if (isStandalone || isInstalled) {
       return;
     }
 
@@ -71,17 +70,13 @@ export default function PwaInstallPrompt() {
       localStorage.setItem("pwa-installed", "true");
       setShowPrompt(false);
     } else {
-      // Hide for 7 days
-      const expireTime = Date.now() + 7 * 24 * 60 * 60 * 1000;
-      localStorage.setItem("pwa-dismissed-until", String(expireTime));
+      // Dismissed: only hide for the current visit.
       setShowPrompt(false);
     }
   };
 
   const handleDismissClick = () => {
-    // Hide for 7 days
-    const expireTime = Date.now() + 7 * 24 * 60 * 60 * 1000;
-    localStorage.setItem("pwa-dismissed-until", String(expireTime));
+    // Dismissed: only hide for the current visit.
     setShowPrompt(false);
   };
 
@@ -98,7 +93,7 @@ export default function PwaInstallPrompt() {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 60 }}
         transition={{ duration: 0.3 }}
-        className="fixed bottom-0 left-0 right-0 w-full md:bottom-6 md:right-[88px] md:left-auto md:max-w-sm rounded-t-[24px] md:rounded-[24px] border-t md:border border-slate-200/50 dark:border-slate-800/50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md shadow-2xl p-6 z-50 flex flex-col gap-4 font-inter text-slate-800 dark:text-slate-100"
+        className="fixed bottom-0 left-0 right-0 w-full md:bottom-6 md:right-[88px] md:left-auto md:max-w-sm rounded-t-[24px] md:rounded-[24px] border-t md:border border-slate-200/50 dark:border-slate-800/50 bg-white/95 dark:bg-slate-955/95 backdrop-blur-md shadow-2xl p-6 z-50 flex flex-col gap-4 font-inter text-slate-800 dark:text-slate-100"
       >
         {/* Header */}
         <div className="flex items-start justify-between gap-3">
@@ -118,7 +113,7 @@ export default function PwaInstallPrompt() {
                 id="pwa-prompt-title"
                 className="font-poppins font-bold text-slate-900 dark:text-white text-sm tracking-tight"
               >
-                Install Sarada Homeo Clinic
+                📲 Install Sarada Homeo Clinic
               </h2>
               <div className="flex items-center gap-1 text-[10px] text-primary dark:text-accent font-semibold mt-0.5">
                 <Star className="w-3 h-3 fill-current" />
@@ -141,7 +136,7 @@ export default function PwaInstallPrompt() {
           id="pwa-prompt-desc"
           className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium"
         >
-          Get faster access to appointments, clinic timings, WhatsApp booking, contact information, and healthcare services directly from your home screen.
+          Install the app for one-tap access to appointments, clinic timings, contact information, and WhatsApp booking.
         </p>
 
         {/* Buttons */}
