@@ -277,7 +277,7 @@ Thank you.`;
                 copied={addressCopy.copied}
               >
                 <a
-                  href="https://www.google.com/maps/place/Sarada+Homeo+Clinic/@18.296722,83.894879,16.5z/data=!4m6!3m5!1s0x3a3c1508ab026f8d:0x463273e970a5abf1!8m2!3d18.296722!4d83.894879!16s%2Fg%2F11wsp3ybd0"
+                  href="https://www.google.com/maps?cid=4063544908076580735"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors"
@@ -448,7 +448,7 @@ Thank you.`;
                 >
                   <iframe
                     title="Sarada Homeo Clinic Location"
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15174.638432106718!2d83.894879!3d18.296722!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3c1508ab026f8d%3A0x463273e970a5abf1!2sSarada%20Homeo%20Clinic!5e0!3m2!1sen!2sin!4v1719830000000!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3788.1186742381587!2d83.89923327371747!3d18.296180282754328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3c159ddd9db8ef%3A0x386449b333ffff7f!2sSarada%20Homeo%20Clinic!5e0!3m2!1sen!2sin!4v1784636364984!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -461,7 +461,7 @@ Thank you.`;
                 {/* Quick action chips */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-semibold text-slate-800 dark:text-slate-200">
                   <a
-                    href="https://www.google.com/maps/place/Sarada+Homeo+Clinic/@18.296722,83.894879,16.5z/data=!4m6!3m5!1s0x3a3c1508ab026f8d:0x463273e970a5abf1!8m2!3d18.296722!4d83.894879!16s%2Fg%2F11wsp3ybd0"
+                    href="https://www.google.com/maps?cid=4063544908076580735"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2.5 p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/40"

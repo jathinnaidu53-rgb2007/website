@@ -73,7 +73,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-4.5 h-4.5 text-primary shrink-0 mt-0.5" />
                 <a
-                  href="https://www.google.com/maps/place/Sarada+Homeo+Clinic/@18.296722,83.894879,16.5z/data=!4m6!3m5!1s0x3a3c1508ab026f8d:0x463273e970a5abf1!8m2!3d18.296722!4d83.894879!16s%2Fg%2F11wsp3ybd0"
+                  href="https://www.google.com/maps?cid=4063544908076580735"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-slate-400 hover:text-primary transition-colors leading-relaxed"
