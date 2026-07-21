@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingWidgets from "@/components/FloatingWidgets";
+import PwaInstallPrompt from "@/components/PwaInstallPrompt";
 
 // ─── Site-wide Metadata ───────────────────────────────────────────────────────
 export const metadata: Metadata = {
@@ -288,6 +289,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </main>
           <Footer />
           <FloatingWidgets />
+          <PwaInstallPrompt />
         </ThemeProvider>
       </body>
     </html>
