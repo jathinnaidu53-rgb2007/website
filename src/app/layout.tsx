@@ -130,7 +130,7 @@ const doctorSchema = {
     addressCountry: "IN",
   },
   description:
-    "Dedicated homeopathic physician with over 10 years of experience, specializing in holistic, safe, and natural treatment for chronic and acute conditions.",
+    "Dedicated homeopathic physician with 15+ years of clinical excellence, specializing in holistic, safe, and natural treatment for chronic and acute conditions.",
   memberOf: { "@type": "MedicalOrganization", name: "Sarada Homeo Clinic" },
   hasCredential: {
     "@type": "EducationalOccupationalCredential",

@@ -227,9 +227,9 @@ export default function Home() {
                 </div>
                 <div>
                   <h4 className="text-2xl font-poppins font-bold text-slate-900 dark:text-white">
-                    <Counter value={10} />+
+                    <Counter value={15} />+
                   </h4>
-                  <p className="text-xs text-slate-500">Years Clinical Excellence</p>
+                  <p className="text-xs text-slate-500">Years of Clinical Excellence</p>
                 </div>
               </div>
             </motion.div>
@@ -398,7 +398,7 @@ export default function Home() {
               <h2 className="text-3xl font-poppins font-bold text-slate-900 dark:text-white">Why Choose Sarada Clinic?</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {[
-                  { title: "Experienced Doctor", desc: "Dr. Anil Kumar brings over a decade of clinical homeopathic practice." },
+                  { title: "Experienced Doctor", desc: "Dr. Anil Kumar brings 15+ years of clinical excellence in homeopathic practice." },
                   { title: "Safe Medicines", desc: "100% natural, non-toxic remedies without side-effects for all age groups." },
                   { title: "Root Cause Analysis", desc: "We evaluate mental, physical and genetic history to target root causes." },
                   { title: "Patient Success", desc: "Over 5000+ satisfied patients treated successfully across Srikakulam." }

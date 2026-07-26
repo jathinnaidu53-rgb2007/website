@@ -78,7 +78,7 @@ export default function About() {
                 Founded with a vision to provide authentic, effective, and safe homeopathic treatment, Sarada Homeo Clinic has grown into a beacon of holistic health in our community. Under the leadership of Dr. P. Anil Kumar, we focus on the "Gentle and Healing" philosophy—where every patient is seen as a whole being, not just a set of symptoms.
               </p>
               <p className="text-sm text-slate-600 dark:text-slate-350 leading-relaxed">
-                Our clinic blends clinical precision with a warm, empathetic environment. We have spent over a decade refining our protocols to ensure that natural healing is accessible, professional, and reliable for families across generations.
+                Our clinic blends clinical precision with a warm, empathetic environment. We have spent 15+ years of clinical excellence refining our protocols to ensure that natural healing is accessible, professional, and reliable for families across generations.
               </p>
             </motion.div>
           </div>
@@ -169,7 +169,7 @@ export default function About() {
               </div>
 
               <p className="text-xs text-slate-400 leading-relaxed">
-                Dr. P. Anil Kumar is a distinguished homeopathic practitioner known for his empathetic approach and precise diagnostic skills. With over a decade of experience, he has dedicated his career to advancing the practice of classical homeopathy. He believes that true healing begins when we understand the individual's unique physical and emotional blueprint.
+                Dr. P. Anil Kumar is a distinguished homeopathic practitioner known for his empathetic approach and precise diagnostic skills. With 15+ years of clinical excellence, he has dedicated his career to advancing the practice of classical homeopathy. He believes that true healing begins when we understand the individual's unique physical and emotional blueprint.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-800 text-xs">
